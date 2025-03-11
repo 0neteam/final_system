@@ -1,0 +1,31 @@
+server.port: 8000
+
+spring:
+  application.name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: stg-service
+          uri: http://localhost:8001
+          predicates:
+            - Path=/stg/**
+          filters:
+            - RewritePath=/stg/?(?<segment>.*), /${segment}
+        - id: mfr-service
+          uri: http://localhost:8002
+          predicates:
+            - Path=/mfr/**
+          filters:
+            - RewritePath=/mfr/?(?<segment>.*), /${segment}
+        - id: oauth-service
+          uri: http://localhost:9000
+          predicates:
+            - Path=/oauth/**
+          filters:
+            - RewritePath=/oauth/?(?<segment>.*), /${segment}
+        - id: react-service
+          uri: http://localhost:5173
+          predicates:
+            - Path=/**
+
+logging.level.org.springframework: INFO

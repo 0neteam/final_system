@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Input</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h2>아이디/비밀번호 등</h2><br>
+    <form>
+        <div class="form-floating mb-2">
+            <input type="text" class="form-control" id="floating1" placeholder="입력값1">
+            <label for="floating1">뭘 입력하지</label>
+        </div>
+        <div class="form-floating mb-2">
+            <input type="password" class="form-control" id="floating2" placeholder="입력값2">
+            <label for="floating2">그러게요</label>
+        </div>
+    </form>
+
+    <br><h2>일반 검색 (짧은/중간/긴 버전)</h2><br>
+    <form>
+        <div class="form mb-2">
+            <input type="text" class="form-control w-50" id="search1" placeholder="검색어를 입력해주세요">
+        </div>
+        <div class="form mb-2">
+            <input type="text" class="form-control flex-fill" id="search2" placeholder="검색어를 입력해주세요">
+        </div>
+    </form>
+    <a>세부적인 크기를 지정하고 싶을 경우 CSS에 지정해야 함</a><br>
+    <a>간격을 mb-2로 통일</a>
+
+    <br><br><h2>검색 위아래 두 줄 (주소)</h2><br>
+    <form>
+        <div class="form mb-3 w-50">
+            <input type="text" class="form-control mb-2" id="search3" placeholder="주소가 자동 입력됩니다" readonly>
+            <input type="text" class="form-control" id="search4" placeholder="상세 주소를 입력해주세요">
+        </div>
+    </form>
+    <div>
+        <a href="./index.html" class="btn btn-outline-success flex-fill">index page</a>
+    </div>
+</div>
+
+</body>
+</html>

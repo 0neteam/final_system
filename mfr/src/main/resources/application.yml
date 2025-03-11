@@ -13,6 +13,11 @@ spring:
       jdbc-url: jdbc:mariadb://d.0neteam.co.kr:8181/mfr
       username: user1
       password: user1
+    trs:
+      driver-class-name: org.mariadb.jdbc.Driver
+      jdbc-url: jdbc:mariadb://d.0neteam.co.kr:8181/trs
+      username: user1
+      password: user1
   jpa:
     hibernate.ddl-auto: update
     properties.hibernate:

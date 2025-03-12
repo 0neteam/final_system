@@ -1,13 +1,16 @@
 package com.img.home;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.reactive.result.view.RedirectView;
 
-@RestController
+@Controller
 public class HomeController {
 
 //    @GetMapping("/")
-//    public String home() {
-//        return "GATEWAY";
+//    public RedirectView home() {
+//        return new RedirectView("/v");
 //    }
 
 }

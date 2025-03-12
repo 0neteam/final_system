@@ -24,9 +24,33 @@ spring:
       show_sql: true
       format_sql: true
 
+management:
+  info:
+    git:
+      mode: full
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  metrics:
+    tags:
+      application: stg
+  tracing:
+    enabled: false
+    sampling:
+      probability: 1.0
+
+springdoc:
+  swagger-ui:
+    path: /docs
+    operationsSorter: method
+
+swagger:
+  api-gateway-url: http://localhost:8000/stg
+
 logging.level.org:
   springframework.security: trace
   hibernate.sql: debug
 
 jwt:
-  keys-uri: http://localhost:8000/app4/.well-known/jwks.json
+  keys-uri: http://localhost:8000/oauth/.well-known/jwks.json

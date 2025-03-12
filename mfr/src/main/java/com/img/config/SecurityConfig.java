@@ -41,7 +41,8 @@ public class SecurityConfig {
     http.oauth2ResourceServer(o -> o.jwt(Customizer.withDefaults()));
     http.authorizeHttpRequests(r -> {
       r.requestMatchers(HttpMethod.GET,"/").permitAll();
-      r.requestMatchers(HttpMethod.POST, "/signIn","/signUp","/oauth/logout").permitAll();
+      r.requestMatchers("/docs","/v3/**","/swagger-ui/**").permitAll();
+//      r.anyRequest().permitAll();
       r.anyRequest().authenticated();
     });
     return http.build();
@@ -56,7 +57,6 @@ public class SecurityConfig {
     config.addAllowedHeader("*");
     config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
     config.setAllowCredentials(true);
-
     UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
     source.registerCorsConfiguration("/**", config);
     return source;

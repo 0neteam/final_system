@@ -55,6 +55,8 @@ public class AuthorizationConfig {
         http.authorizeHttpRequests(r -> {
             r.requestMatchers(HttpMethod.GET,"/","/.well-known/jwks.json").permitAll();
             r.requestMatchers(HttpMethod.POST,"/addClient","/getClient").permitAll();
+            r.requestMatchers("/docs","/v3/**","/swagger-ui/**").permitAll();
+//          r.anyRequest().permitAll();
             r.anyRequest().authenticated();
         });
 
@@ -70,7 +72,6 @@ public class AuthorizationConfig {
         config.addAllowedHeader("*");
         config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"));
 //        config.setAllowCredentials(true);
-
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
         return source;
@@ -122,8 +123,8 @@ public class AuthorizationConfig {
                 RegisteredClient client = context.getRegisteredClient();
                 JwtClaimsSet.Builder builder = context.getClaims();
 
-                builder.issuer("App4_Server");
-                builder.expiresAt(Instant.now().plus(1, ChronoUnit.MINUTES));
+                builder.issuer("OAuth2_Server");
+                builder.expiresAt(Instant.now().plus(1, ChronoUnit.DAYS));
 
                 builder.claims((claims) -> {
                     claims.put("scope", client.getScopes());

@@ -8,155 +8,71 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        // ✅ 모달에 데이터 채우는 함수
-        function showDetail(transpNo, itemName, qty, departure, destination, status) {
-            document.getElementById("modalTranspNo").textContent = transpNo;
-            document.getElementById("modalItemName").textContent = itemName;
-            document.getElementById("modalQty").textContent = qty;
-            document.getElementById("modalDeparture").textContent = departure;
-            document.getElementById("modalDestination").textContent = destination;
-            document.getElementById("modalStatus").textContent = status;
-
-            // ✅ 모달 열기
-            var detailModal = new bootstrap.Modal(document.getElementById("detailModal"));
-            detailModal.show();
+        // ✅ 상세 페이지로 이동하는 함수
+        function goToDetail(transpNo) {
+            location.href = "trsDetail.html?transpNo=" + transpNo;
         }
     </script>
 
-    <style>
-        .modal-dialog {
-            max-width: 90%;  /* 전체 화면의 90% 크기로 */
-            width: 90%;
-        }
-        .modal-body {
-            max-height: 80vh;  /* 화면 높이의 80% */
-            overflow-y: auto;   /* 내부 스크롤 추가 */
-        }
-    </style>
-
 </head>
 <body>
-<main class="container my-2">
-    <div class="text-center">
-    <div class="container-fluid">
-        <h2 class="my-4">운송 조회</h2>
-
-        <div class="row align-items-center mb-3">
-
-        <!-- 검색 필터 -->
-        <div class="row mb-3">
-            <div class="col-lg-2 my-1">
-                <select class="form-select">
-                    <option selected>전체</option>
-                    <option value="운송 번호">운송 번호</option>
-                    <option value="출발지">출발지</option>
-                    <option value="도착지">도착지</option>
-                    <option value="운송 상태">운송 상태</option>
-                </select>
-            </div>
-            <div class="col-lg-4 my-1">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="">
-                    <button class="btn btn-success">검색</button>
-                </div>
-            </div>
+<main>
+    <div class="container my-3">
+        <div class ="text-center">
+            <h2 class="my-4">운송 조회</h2>
         </div>
-
-
-
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped" style="min-width: 992px;">
-            <thead class="table-dark">
-            <tr class="text-center">
-                <th>운송 번호</th>
-                <th>출발지</th>
-                <th>도착지</th>
-                <th>운송 상태</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr onclick="showDetail('1001', '연필', '129', '서울', '부산', '배송 중')" style="cursor: pointer;">
-                <td>1001</td>
-                <td>서울</td>
-                <td>부산</td>
-                <td><span class="badge bg-warning">배송 중</span></td>
-            </tr>
-            <tr onclick="showDetail('1002', '지우개', '50', '대전', '광주', '배송 완료')" style="cursor: pointer;">
-                <td>1002</td>
-                <td>대전</td>
-                <td>광주</td>
-                <td><span class="badge bg-success">배송 완료</span></td>
-            </tr>
-            <tr onclick="showDetail('1003', '노트', '200', '일산', '하남', '배송 준비 중')" style="cursor: pointer;">
-                <td>1003</td>
-                <td>일산</td>
-                <td>하남</td>
-                <td><span class="badge bg-primary">배송 준비 중</span></td>
-            </tr>
-            </tbody>
-        </table>
-        </div>
-    </div>
-</div>
-
-    <!-- ✅ 상세 정보 모달 -->
-    <div class="modal fade" id="detailModal" tabindex="-1">
-        <div class="modal-dialog custom-modal">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">운송 상세 정보</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            <!-- 검색 필터 -->
+            <div class="row mb-3">
+                <div class="col-lg-2 my-1">
+                    <select class="form-select">
+                        <option selected>전체</option>
+                        <option value="운송 번호">운송 번호</option>
+                        <option value="출발지">출발지</option>
+                        <option value="도착지">도착지</option>
+                        <option value="운송 상태">운송 상태</option>
+                    </select>
                 </div>
-                <div class="modal-body">
-                    <div class="table-responsive">
-                        <table class="table table-bordered text-center table-striped" style="min-width: 992px;">
-                            <thead class="table-dark">
-                            <tr>
-                                <th>운송 번호</th>
-                                <th>품목 이름</th>
-                                <th>품목 수량</th>
-                                <th>출발지</th>
-                                <th>도착지</th>
-                                <th>운송 상태</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td id="modalTranspNo"></td>
-                                <td id="modalItemName"></td>
-                                <td id="modalQty"></td>
-                                <td id="modalDeparture"></td>
-                                <td id="modalDestination"></td>
-                                <td id="modalStatus"></td>
-                            </tr>
-                            </tbody>
-                        </table>
+                <div class="col-lg-4 my-1">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="">
+                        <button class="btn btn-success">검색</button>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#trackingModal">운송 경로 추적</button>
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-                </div>
             </div>
-        </div>
-    </div>
-    </div>
 
-<!-- ✅ 운송 경로 모달 -->
-<div class="modal fade" id="trackingModal" tabindex="-1">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">운송 경로 추적</h5>
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-            </div>
-            <div class="modal-body">
-                <p>운송 경로가 여기에 표시됩니다.</p>
-                <div id="map" style="height: 400px; background-color: #ddd;"></div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped">
+                    <thead class="table-dark">
+                    <tr class="text-center">
+                        <th>운송 번호</th>
+                        <th>출발지</th>
+                        <th>도착지</th>
+                        <th>운송 상태</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr onclick="goToDetail(1001)" style="cursor: pointer;">
+                        <td>1001</td>
+                        <td>서울</td>
+                        <td>부산</td>
+                        <td><span class="badge bg-warning">배송 중</span></td>
+                    </tr>
+                    <tr onclick="goToDetail(1002)" style="cursor: pointer;">
+                        <td>1002</td>
+                        <td>대전</td>
+                        <td>광주</td>
+                        <td><span class="badge bg-success">배송 완료</span></td>
+                    </tr>
+                    <tr onclick="goToDetail(1003)" style="cursor: pointer;">
+                        <td>1003</td>
+                        <td>일산</td>
+                        <td>하남</td>
+                        <td><span class="badge bg-primary">배송 준비 중</span></td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-    </div>
-</div>
 </main>
 </body>
 </html>

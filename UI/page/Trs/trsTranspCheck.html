@@ -61,7 +61,7 @@
 <main class="container my-2">
     <div class="text-center">
         <h2 class="my-4">운송 확인</h2>
-
+    </div>
         <!-- 검색 필터 -->
         <div class="row mb-3">
             <div class="col-lg-2 my-1">
@@ -75,20 +75,20 @@
             </div>
             <div class="col-lg-4 my-1">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="검색어 입력">
+                    <input type="text" class="form-control" placeholder="">
                     <button class="btn btn-success">검색</button>
                     </div>
             </div>
                 <div class="col-lg-3 my-1"></div>
                 <div class="col-lg-3 my-1 text-end">
-                    <h5>***기사님</h5>
+                    <h5>감자 기사님</h5>
                 </div>
             </div>
         </div>
 
         <!-- 배송 목록 -->
         <div class="table-responsive">
-            <table class="table table-bordered text-center table-striped">
+            <table class="table table-bordered table-striped">
                 <thead class="table-dark">
                 <tr class="text-center">
                     <th>운송 번호</th>
@@ -109,18 +109,17 @@
                     <td>2002</td>
                     <td>인천</td>
                     <td>대전</td>
-                    <td><span class="badge bg-primary">배송 준비 중</span></td>
+                    <td><span class="badge bg-warning">배송 중</span></td>
                 </tr>
                 <tr onclick="showDetail(2003, '냉장고', '1', '광주', '울산', '배송 완료')" style="cursor: pointer;">
                     <td>2003</td>
                     <td>광주</td>
                     <td>울산</td>
-                    <td><span class="badge bg-primary">배송 준비 중</span></td>
+                    <td><span class="badge bg-success">배송 완료</span></td>
                 </tr>
                 </tbody>
             </table>
         </div>
-    </div>
 
     <!-- ✅ 상세 정보 모달 -->
     <div class="modal fade" id="detailModal" tabindex="-1">
@@ -131,9 +130,9 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <table class="table table-bordered text-center">
+                    <table class="table table-bordered table-striped">
                         <thead class="table-dark">
-                        <tr>
+                        <tr class="text-center">
                             <th>운송 번호</th>
                             <th>품목 이름</th>
                             <th>품목 수량</th>

@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/stg/pom.xml" />
         <option value="$PROJECT_DIR$/mfr/pom.xml" />
         <option value="$PROJECT_DIR$/oauth/pom.xml" />
+        <option value="$PROJECT_DIR$/trs/pom.xml" />
       </list>
     </option>
   </component>

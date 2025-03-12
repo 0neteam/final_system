@@ -1,7 +1,7 @@
-server.port: 8001
+server.port: 8003
 
 spring:
-  application.name: stg
+  application.name: trs
   datasource:
     stg:
       driver-class-name: org.mariadb.jdbc.Driver
@@ -29,4 +29,4 @@ logging.level.org:
   hibernate.sql: debug
 
 jwt:
-  keys-uri: http://localhost:8000/app4/.well-known/jwks.json
+  keys-uri: http://localhost:8000/:well-known/jwks:json
